@@ -118,12 +118,14 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         recognition.start();
     }
+    function pauseRecording() {
         if (recorder) {
             recorder.pauseRecording();
             console.log('Recording paused');
         }
     }
 
+    function stopRecording() {
     function stopRecording() {
         if (recorder) {
             recorder.stopRecording(() => {
@@ -146,10 +148,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function saveSettings(event) {
+    function saveSettings(event) {
         event.preventDefault();
         const notionToken = document.getElementById('notion-token').value;
         const databaseId = document.getElementById('database-id').value;
         console.log('Settings saved:', { notionToken, databaseId });
         // Implement settings save logic
+    }
     }
 });
