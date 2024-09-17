@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const recordingsList = document.getElementById('recordings-list');
     const settingsForm = document.getElementById('settings-form');
     const audioInputsSelect = document.getElementById('audio-inputs');
+    const sensitivitySlider = document.getElementById('sensitivity-slider');
 
     // Get available audio input devices
     navigator.mediaDevices.enumerateDevices().then(devices => {
@@ -36,7 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
         const source = audioContext.createMediaStreamSource(stream);
         analyser = audioContext.createAnalyser();
-        source.connect(analyser);
+        const gainNode = audioContext.createGain();
+        gainNode.gain.value = sensitivitySlider.value / 50; // Default to 1.0
+        sensitivitySlider.addEventListener('input', () => {
+            gainNode.gain.value = sensitivitySlider.value / 50;
+        });
+        source.connect(gainNode);
+        gainNode.connect(analyser);
         analyser.fftSize = 2048;
         bufferLength = analyser.frequencyBinCount;
         dataArray = new Uint8Array(bufferLength);

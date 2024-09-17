@@ -9,7 +9,10 @@
 </head>
 <body>
     <h1>Voice Recorder</h1>
-    <canvas id="waveform" width="600" height="100"></canvas>
+    <div style="display: flex; align-items: center;">
+        <canvas id="waveform" width="500" height="100"></canvas>
+        <input type="range" id="sensitivity-slider" min="0" max="100" value="50" style="margin-left: 20px;">
+    </div>
     <div id="recorder-controls">
         <button id="start-btn">Start</button>
         <button id="pause-btn">Pause</button>
@@ -22,9 +25,9 @@
     <h2>Settings</h2>
     <form id="settings-form">
         <label for="notion-token">Notion API Token:</label>
-        <input type="text" id="notion-token" name="notion-token" required>
+        <input type="text" id="notion-token" name="notion-token">
         <label for="database-id">Database ID:</label>
-        <input type="text" id="database-id" name="database-id" required>
+        <input type="text" id="database-id" name="database-id">
         <label for="audio-inputs">Select Audio Input:</label>
         <select id="audio-inputs"></select>
         <button type="submit">Save Settings</button>
