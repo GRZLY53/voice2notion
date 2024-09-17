@@ -11,8 +11,8 @@
     <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
 </head>
-<body class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light container">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,27 +30,29 @@
             </ul>
         </div>
     </nav>
-    <h1 class="text-center my-4" style="font-weight: bold; font-size: 2.5rem;">Voice Recorder</h1>
-    <div class="d-flex align-items-center justify-content-center mb-3">
+    <div class="container">
+        <h1 class="text-center my-4" style="font-weight: bold; font-size: 2.5rem;">Voice Recorder</h1>
+        <div class="row justify-content-center mb-3">
         <canvas id="waveform" width="300" height="100" class="border"></canvas>
         <input type="range" id="sensitivity-slider" min="0" max="100" value="50" class="ml-3">
-    </div>
-    <div id="volume-level" class="text-center mb-3">Volume: 0</div>
-    <div id="recorder-controls" class="text-center mb-4">
+        </div>
+        <div id="volume-level" class="text-center mb-3">Volume: 0</div>
+        <div id="recorder-controls" class="text-center mb-4">
         <button id="start-btn" class="btn btn-primary">Start</button>
         <button id="pause-btn" class="btn btn-warning">Pause</button>
         <button id="stop-btn" class="btn btn-danger">Stop</button>
-    </div>
-    <h2 class="text-center" style="font-weight: bold; font-size: 2rem;">Recordings</h2>
-    <ul id="recordings-list" class="list-unstyled text-center">
+        </div>
+        <h2 class="text-center" style="font-weight: bold; font-size: 2rem;">Recordings</h2>
+        <ul id="recordings-list" class="list-unstyled text-center">
         <li>No recordings yet.</li>
-    </ul>
-    <audio id="audio-player" class="d-none" controls>
+        </ul>
+        <audio id="audio-player" class="d-none" controls>
         <source id="audio-source" src="" type="audio/wav">
-    </audio>
-    <h2 class="text-center mt-4" style="font-weight: bold; font-size: 2rem;">Transcription</h2>
-    <textarea id="transcription-field" rows="10" class="form-control mb-4"></textarea>
-    <div class="hamburger-menu text-center">
+        </audio>
+        <h2 class="text-center mt-4" style="font-weight: bold; font-size: 2rem;">Transcription</h2>
+        <textarea id="transcription-field" rows="10" class="form-control mb-4"></textarea>
+    </div>
+    <div class="hamburger-menu text-center container">
         <button id="menu-toggle" class="btn btn-secondary">☰</button>
         <div id="settings-menu" class="menu-content mt-3 p-3 border rounded">
             <form id="settings-form">
