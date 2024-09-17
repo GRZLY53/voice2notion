@@ -12,7 +12,26 @@
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
 </head>
 <body>
-    <div class="container">
+    <button id="settings-toggle" class="btn btn-link position-absolute" style="top: 10px; left: 10px;">
+        <img src="https://img.icons8.com/ios-glyphs/30/000000/settings.png" alt="Settings Icon">
+    </button>
+    <div id="settings-menu" class="menu-content mt-3 p-3 border rounded d-none position-absolute" style="top: 50px; left: 10px; background-color: white; z-index: 1000;">
+        <form id="settings-form">
+            <div class="form-group">
+                <label for="notion-token">Notion API Token:</label>
+                <input type="text" id="notion-token" name="notion-token" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="database-id">Database ID:</label>
+                <input type="text" id="database-id" name="database-id" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="audio-inputs">Select Audio Input:</label>
+                <select id="audio-inputs" class="form-control"></select>
+            </div>
+            <button type="submit" class="btn btn-success">Save Settings</button>
+        </form>
+    </div>
         <h1 class="text-center my-4" style="font-weight: bold; font-size: 2.5rem;">Voice Recorder</h1>
         <div class="row justify-content-center mb-3">
         <canvas id="waveform" width="300" height="100" class="border"></canvas>

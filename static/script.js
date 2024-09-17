@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Implement settings save logic
     }
 });
-document.getElementById('menu-toggle').addEventListener('click', function() {
+document.getElementById('settings-toggle').addEventListener('click', function() {
     const settingsMenu = document.getElementById('settings-menu');
     settingsMenu.classList.toggle('active');
 });
