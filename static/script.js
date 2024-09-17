@@ -15,6 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Implement start recording logic
     }
 
+    function startRecording() {
+        console.log('Recording started');
+        fetch('/record', { method: 'POST' })
+            .then(response => response.text())
+            .then(data => console.log(data))
+            .catch(error => console.error('Error:', error));
+    }
+
     function pauseRecording() {
         console.log('Recording paused');
         // Implement pause recording logic

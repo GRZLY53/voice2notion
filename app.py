@@ -29,10 +29,11 @@ def record_audio():
     # Ensure the uploads directory exists
     os.makedirs('uploads', exist_ok=True)
 
-    with sr.Microphone() as source:
-        print("Recording...")
-        audio = recognizer.listen(source)
-        print("Recording complete.")
+    if request.method == 'POST':
+        with sr.Microphone() as source:
+            print("Recording...")
+            audio = recognizer.listen(source)
+            print("Recording complete.")
 
     # Save the audio file
     audio_file_path = os.path.join('uploads', 'recording.wav')
