@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         source.connect(gainNode);
         gainNode.connect(analyser);
-        gainNode.connect(audioContext.destination); // Ensure audio is routed to the destination
+        // gainNode.connect(audioContext.destination); // Remove this line to prevent audio playback
         analyser.fftSize = 2048;
         bufferLength = analyser.frequencyBinCount;
         dataArray = new Uint8Array(bufferLength);
