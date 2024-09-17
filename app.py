@@ -71,5 +71,7 @@ def record_audio():
 def index():
     return render_template('index.html')
 
+from hello import hello
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=80)
