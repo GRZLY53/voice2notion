@@ -6,6 +6,7 @@ body {
     background-color: #ffffff;
     color: #333333;
     line-height: 1.6;
+    max-width: 100vw;
 }
 
 .hamburger-menu {
@@ -13,16 +14,19 @@ body {
     top: 10px;
     left: 10px;
     z-index: 1100; /* Ensure it is above the sidebar */
+    display: none; /* Hide by default */
 }
 
 .navbar {
     margin-bottom: 20px;
     background-color: #007bff;
     color: #ffffff;
+    width: 100%;
 }
 
 .menu-content form {
     display: block;
+    max-width: 100%;
 }
 
 .menu-content input, .menu-content select, .menu-content button {
@@ -34,6 +38,8 @@ body {
 
 #recorder-controls button {
     margin-right: 10px;
+    width: 100%;
+    max-width: 150px;
 }
 
 #recordings-list {
@@ -43,4 +49,27 @@ body {
 
 #recordings-list li {
     margin-bottom: 10px;
+    word-wrap: break-word;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+    }
+
+    .hamburger-menu {
+        display: block;
+    }
+
+    #recorder-controls {
+        flex-direction: column;
+    }
+
+    #recorder-controls button {
+        margin-bottom: 10px;
+    }
+
+    #waveform {
+        width: 100%;
+    }
 }
