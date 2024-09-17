@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         interimTranscript += transcript;
                     }
                 }
-                transcriptionField.value = transcriptionField.value.trim() + '\n' + interimTranscript;
+                transcriptionField.value = transcriptionField.value.trim() + ' ' + interimTranscript;
             };
             recognition.start();
         }
