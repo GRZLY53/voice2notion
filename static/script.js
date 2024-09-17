@@ -87,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (i === 0) {
                     canvasCtx.moveTo(x, y);
-                    transcriptionField.value = transcriptionField.value.trim() + '\n' + interimTranscript;
                 } else {
                     canvasCtx.lineTo(x, y);
                 }
@@ -97,6 +96,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
             canvasCtx.lineTo(canvas.width, canvas.height / 2);
             canvasCtx.stroke();
+
+            // Calculate the average volume
+            let sum = 0;
+            for (let i = 0; i < bufferLength; i++) {
+                sum += dataArray[i];
+            }
+            const average = sum / bufferLength;
+
+            // Display the volume level
+            const volumeLevel = document.getElementById('volume-level');
+            volumeLevel.textContent = `Volume: ${Math.round(average)}`;
         }
 
         draw();
