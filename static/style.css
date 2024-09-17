@@ -9,12 +9,17 @@ body {
     max-width: 100vw;
 }
 
-.hamburger-menu {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 1100; /* Ensure it is above the sidebar */
-    display: none; /* Hide by default */
+#menu-toggle {
+    display: block;
+    margin: 10px auto;
+}
+
+#settings-menu {
+    display: none;
+}
+
+#settings-menu.active {
+    display: block;
 }
 
 .navbar {
