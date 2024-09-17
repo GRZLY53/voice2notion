@@ -1,4 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
+    let editor;
+    ClassicEditor
+        .create(document.querySelector('#transcription-field'))
+        .then(newEditor => {
+            editor = newEditor;
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
     const startBtn = document.getElementById('start-btn');
     const pauseBtn = document.getElementById('pause-btn');
     const stopBtn = document.getElementById('stop-btn');
@@ -130,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         interimTranscript += transcript;
                     }
                 }
-                transcriptionField.value = finalTranscript + interimTranscript;
+                editor.setData(finalTranscript + interimTranscript);
             };
             recognition.start();
         }
