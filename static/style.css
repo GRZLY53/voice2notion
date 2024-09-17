@@ -23,6 +23,7 @@ body {
     z-index: 1000;
     padding: 20px;
     transition: left 0.3s ease;
+    overflow-y: auto; /* Ensure content is scrollable */
 }
 
 .menu-content form {
