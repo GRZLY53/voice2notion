@@ -1,26 +1,29 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
 }
 
 .hamburger-menu {
     position: relative;
-    display: inline-block;
+    display: block;
+    text-align: center;
 }
 
 .menu-content {
     display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 200px;
+    position: relative;
+    background-color: #ffffff;
+    min-width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
     padding: 10px;
+    margin-top: 10px;
 }
 
 .menu-content form {
-    display: flex;
-    flex-direction: column;
+    display: block;
 }
 
 .menu-content input, .menu-content select, .menu-content button {

@@ -4,39 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voice Recorder</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
 </head>
-<body>
-    <h1>Voice Recorder</h1>
-    <div style="display: flex; align-items: center;">
-        <canvas id="waveform" width="500" height="100"></canvas>
-        <input type="range" id="sensitivity-slider" min="0" max="100" value="50" style="margin-left: 20px;">
+<body class="container">
+    <h1 class="text-center my-4">Voice Recorder</h1>
+    <div class="d-flex align-items-center justify-content-center mb-3">
+        <canvas id="waveform" width="300" height="100" class="border"></canvas>
+        <input type="range" id="sensitivity-slider" min="0" max="100" value="50" class="ml-3">
     </div>
-    <div id="volume-level" style="margin-top: 10px;">Volume: 0</div>
-    <div id="recorder-controls">
-        <button id="start-btn">Start</button>
-        <button id="pause-btn">Pause</button>
-        <button id="stop-btn">Stop</button>
+    <div id="volume-level" class="text-center mb-3">Volume: 0</div>
+    <div id="recorder-controls" class="text-center mb-4">
+        <button id="start-btn" class="btn btn-primary">Start</button>
+        <button id="pause-btn" class="btn btn-warning">Pause</button>
+        <button id="stop-btn" class="btn btn-danger">Stop</button>
     </div>
-    <h2>Recordings</h2>
-    <ul id="recordings-list">
+    <h2 class="text-center">Recordings</h2>
+    <ul id="recordings-list" class="list-unstyled text-center">
         <li>No recordings yet.</li>
     </ul>
-    <h2>Transcription</h2>
-    <textarea id="transcription-field" rows="10" cols="80"></textarea>
-    <div class="hamburger-menu">
-        <button id="menu-toggle">☰ Settings</button>
-        <div id="settings-menu" class="menu-content">
+    <h2 class="text-center mt-4">Transcription</h2>
+    <textarea id="transcription-field" rows="10" class="form-control mb-4"></textarea>
+    <div class="hamburger-menu text-center">
+        <button id="menu-toggle" class="btn btn-secondary">☰ Settings</button>
+        <div id="settings-menu" class="menu-content mt-3 p-3 border rounded">
             <form id="settings-form">
-                <label for="notion-token">Notion API Token:</label>
-                <input type="text" id="notion-token" name="notion-token">
-                <label for="database-id">Database ID:</label>
-                <input type="text" id="database-id" name="database-id">
-                <label for="audio-inputs">Select Audio Input:</label>
-                <select id="audio-inputs"></select>
-                <button type="submit">Save Settings</button>
+                <div class="form-group">
+                    <label for="notion-token">Notion API Token:</label>
+                    <input type="text" id="notion-token" name="notion-token" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="database-id">Database ID:</label>
+                    <input type="text" id="database-id" name="database-id" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="audio-inputs">Select Audio Input:</label>
+                    <select id="audio-inputs" class="form-control"></select>
+                </div>
+                <button type="submit" class="btn btn-success">Save Settings</button>
             </form>
         </div>
     </div>
