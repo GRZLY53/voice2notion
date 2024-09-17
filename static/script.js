@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const pauseBtn = document.getElementById('pause-btn');
     const stopBtn = document.getElementById('stop-btn');
     const recordingsList = document.getElementById('recordings-list');
+    const transcriptionField = document.getElementById('transcription-field');
     const settingsForm = document.getElementById('settings-form');
     const audioInputsSelect = document.getElementById('audio-inputs');
     const sensitivitySlider = document.getElementById('sensitivity-slider');
@@ -57,6 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
         recorder.startRecording();
         console.log('Recording started');
         drawWaveform();
+        startTranscription();
     }
 
     function drawWaveform() {
@@ -98,7 +100,24 @@ document.addEventListener('DOMContentLoaded', function() {
         draw();
     }
 
-    function pauseRecording() {
+    function startTranscription() {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.onresult = (event) => {
+            let interimTranscript = '';
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                const transcript = event.results[i][0].transcript;
+                if (event.results[i].isFinal) {
+                    transcriptionField.value += transcript + '\n';
+                } else {
+                    interimTranscript += transcript;
+                }
+            }
+            transcriptionField.value = transcriptionField.value.trim() + '\n' + interimTranscript;
+        };
+        recognition.start();
+    }
         if (recorder) {
             recorder.pauseRecording();
             console.log('Recording paused');
