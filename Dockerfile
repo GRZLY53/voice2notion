@@ -13,5 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Make port 80 available to the world outside this container
 EXPOSE 80
 
+# Set environment variables for API keys
+ENV NOTION_API_KEY=your_notion_api_key
+ENV GOOGLE_SPEECH_API_KEY=your_google_api_key
+
 # Run app.py when the container launches
 CMD ["python", "app.py"]

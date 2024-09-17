@@ -35,28 +35,56 @@ def record_audio():
             audio = recognizer.listen(source)
             print("Recording complete.")
 
-    # Save the audio file
-    audio_file_path = os.path.join('uploads', 'recording.wav')
+    # Save the audio file with metadata
+    audio_file_name = f"recording_{int(time.time())}.wav"
+    audio_file_path = os.path.join('uploads', audio_file_name)
     with open(audio_file_path, 'wb') as f:
         f.write(audio.get_wav_data())
+
+    # Save metadata
+    metadata = {
+        "filename": audio_file_name,
+        "date": datetime.now().isoformat(),
+        "duration": len(audio.get_wav_data()) / 16000,  # Assuming 16kHz sample rate
+        "user_id": "default_user"  # Placeholder for user ID
+    }
+    with open(os.path.join('uploads', f"{audio_file_name}.json"), 'w') as f:
+        json.dump(metadata, f, indent=4)
 
     try:
         # Transcribe audio to text
         text = recognizer.recognize_google(audio)
         print(f"Transcription: {text}")
 
-        # Create a new page in Notion
+        # Create a new page in Notion with metadata
         notion.pages.create(
-            parent={"database_id": "your_database_id"},
+            parent={"database_id": config.get("notion_database_id", "your_database_id")},
             properties={
-                "title": {
+                "Title": {
                     "title": [
+                        {
+                            "text": {
+                                "content": metadata["filename"]
+                            }
+                        }
+                    ]
+                },
+                "Date": {
+                    "date": {
+                        "start": metadata["date"]
+                    }
+                },
+                "Transcription": {
+                    "rich_text": [
                         {
                             "text": {
                                 "content": text
                             }
                         }
                     ]
+                },
+                "Audio Link": {
+                    "url": f"/uploads/{metadata['filename']}"
                 }
             }
         )
