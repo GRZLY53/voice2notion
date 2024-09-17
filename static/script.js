@@ -147,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function saveSettings(event) {
-    function saveSettings(event) {
         event.preventDefault();
         const notionToken = document.getElementById('notion-token').value;
         const databaseId = document.getElementById('database-id').value;
