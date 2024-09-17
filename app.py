@@ -1,5 +1,7 @@
 import os
 import json
+import time
+from datetime import datetime
 from flask import Flask, request, render_template
 import speech_recognition as sr
 from notion_client import Client
