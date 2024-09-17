@@ -14,7 +14,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const startBtn = document.getElementById('start-btn');
 
     menuToggle.addEventListener('click', () => {
-        settingsMenu.style.display = settingsMenu.style.display === 'block' ? 'none' : 'block';
+        if (settingsMenu.style.left === '0px') {
+            settingsMenu.style.left = '-250px';
+        } else {
+            settingsMenu.style.left = '0px';
+        }
     });
     const pauseBtn = document.getElementById('pause-btn');
     const stopBtn = document.getElementById('stop-btn');
