@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+#recorder-controls button {
+    margin-right: 10px;
+}
+
+#recordings-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#recordings-list li {
+    margin-bottom: 10px;
+}

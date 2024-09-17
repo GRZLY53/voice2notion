@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Recorder</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Voice Recorder</h1>
+    <div id="recorder-controls">
+        <button id="start-btn">Start</button>
+        <button id="pause-btn">Pause</button>
+        <button id="stop-btn">Stop</button>
+    </div>
+    <h2>Recordings</h2>
+    <ul id="recordings-list"></ul>
+    <h2>Settings</h2>
+    <form id="settings-form">
+        <label for="notion-token">Notion API Token:</label>
+        <input type="text" id="notion-token" name="notion-token" required>
+        <label for="database-id">Database ID:</label>
+        <input type="text" id="database-id" name="database-id" required>
+        <button type="submit">Save Settings</button>
+    </form>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

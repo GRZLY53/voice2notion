@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 import speech_recognition as sr
 from notion_client import Client
 
@@ -39,5 +39,7 @@ def record_audio():
     except Exception as e:
         return str(e), 400
 
-if __name__ == '__main__':
+@app.route('/')
+def index():
+    return render_template('index.html')
     app.run(host='0.0.0.0', port=80)
