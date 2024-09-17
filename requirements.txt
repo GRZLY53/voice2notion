@@ -1,0 +1,3 @@
+SpeechRecognition
+notion-client
+flask
