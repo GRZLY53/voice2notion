@@ -13,26 +13,8 @@ body {
     z-index: 1100; /* Ensure it is above the sidebar */
 }
 
-.menu-content {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 80%;
-    max-width: 300px;
-    height: 100%;
-    background-color: #ffffff;
-    box-shadow: 2px 0 5px rgba(0,0,0,0.5);
-    z-index: 2000;
-    padding: 20px;
-    transition: left 0.3s ease;
-    overflow-y: auto; /* Ensure content is scrollable */
-}
-
-@media (min-width: 768px) {
-    .menu-content {
-        left: -300px;
-        width: 250px;
-    }
+.navbar {
+    margin-bottom: 20px;
 }
 
 .menu-content form {
