@@ -10,27 +10,37 @@ document.addEventListener('DOMContentLoaded', function() {
     stopBtn.addEventListener('click', stopRecording);
     settingsForm.addEventListener('submit', saveSettings);
 
-    function startRecording() {
-        console.log('Recording started');
-        // Implement start recording logic
-    }
+    let recorder;
+    let stream;
 
-    function startRecording() {
+    async function startRecording() {
+        stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        recorder = RecordRTC(stream, {
+            type: 'audio',
+            mimeType: 'audio/wav',
+            recorderType: StereoAudioRecorder,
+            desiredSampRate: 16000
+        });
+        recorder.startRecording();
         console.log('Recording started');
-        fetch('/record', { method: 'POST' })
-            .then(response => response.text())
-            .then(data => console.log(data))
-            .catch(error => console.error('Error:', error));
     }
 
     function pauseRecording() {
-        console.log('Recording paused');
-        // Implement pause recording logic
+        if (recorder) {
+            recorder.pauseRecording();
+            console.log('Recording paused');
+        }
     }
 
     function stopRecording() {
-        console.log('Recording stopped');
-        // Implement stop recording logic
+        if (recorder) {
+            recorder.stopRecording(() => {
+                let blob = recorder.getBlob();
+                invokeSaveAsDialog(blob);
+                stream.getTracks().forEach(track => track.stop());
+                console.log('Recording stopped');
+            });
+        }
     }
 
     function saveSettings(event) {
