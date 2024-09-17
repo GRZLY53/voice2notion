@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request, render_template
 import speech_recognition as sr
 from notion_client import Client
@@ -10,10 +11,18 @@ notion = Client(auth="your_notion_integration_token")
 @app.route('/record', methods=['POST'])
 def record_audio():
     recognizer = sr.Recognizer()
+    # Ensure the uploads directory exists
+    os.makedirs('uploads', exist_ok=True)
+
     with sr.Microphone() as source:
         print("Recording...")
         audio = recognizer.listen(source)
         print("Recording complete.")
+
+    # Save the audio file
+    audio_file_path = os.path.join('uploads', 'recording.wav')
+    with open(audio_file_path, 'wb') as f:
+        f.write(audio.get_wav_data())
 
     try:
         # Transcribe audio to text
