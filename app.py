@@ -38,7 +38,7 @@ def record_audio():
             print("Recording complete.")
 
     # Save the audio file with metadata
-    audio_file_name = f"recording_{int(time.time())}.mp3"
+    audio_file_name = f"recording_{int(time.time())}.wav"
     audio_file_path = os.path.join('uploads', audio_file_name)
     with open(audio_file_path, 'wb') as f:
         f.write(audio.get_wav_data())
@@ -94,9 +94,9 @@ def record_audio():
         config['last_transcription'] = text
         save_config(config)
 
-        return "Notion page created successfully and settings saved!", 200
+        return json.dumps({"message": "Notion page created successfully and settings saved!", "status": "completed"}), 200
     except Exception as e:
-        return str(e), 400
+        return json.dumps({"message": str(e), "status": "failed"}), 400
 
 @app.route('/')
 def index():

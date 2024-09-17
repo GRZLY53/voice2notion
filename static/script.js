@@ -92,6 +92,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 invokeSaveAsDialog(blob);
                 stream.getTracks().forEach(track => track.stop());
                 console.log('Recording stopped');
+
+                // Display transcription status
+                const statusElement = document.createElement('li');
+                statusElement.textContent = 'Transcription in progress...';
+                recordingsList.appendChild(statusElement);
+
+                // Simulate server request for transcription
+                setTimeout(() => {
+                    statusElement.textContent = 'Transcription completed!';
+                }, 5000); // Simulate delay
             });
         }
     }
