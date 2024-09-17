@@ -14,11 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const startBtn = document.getElementById('start-btn');
 
     menuToggle.addEventListener('click', () => {
-        if (settingsMenu.style.left === '0px') {
-            settingsMenu.style.left = '-250px';
-        } else {
-            settingsMenu.style.left = '0px';
-        }
+        settingsMenu.style.left = settingsMenu.style.left === '0px' ? '-250px' : '0px';
     });
     const pauseBtn = document.getElementById('pause-btn');
     const stopBtn = document.getElementById('stop-btn');
@@ -172,7 +168,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 audioSource.src = audioURL;
                 audioPlayer.classList.remove('d-none');
                 audioPlayer.load();
-                audioPlayer.play();
                 stream.getTracks().forEach(track => track.stop());
                 console.log('Recording stopped');
 
