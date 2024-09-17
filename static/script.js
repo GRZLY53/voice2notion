@@ -4,6 +4,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const stopBtn = document.getElementById('stop-btn');
     const recordingsList = document.getElementById('recordings-list');
     const settingsForm = document.getElementById('settings-form');
+    const audioInputsSelect = document.getElementById('audio-inputs');
+
+    // Get available audio input devices
+    navigator.mediaDevices.enumerateDevices().then(devices => {
+        devices.forEach(device => {
+            if (device.kind === 'audioinput') {
+                const option = document.createElement('option');
+                option.value = device.deviceId;
+                option.text = device.label || `Microphone ${audioInputsSelect.length + 1}`;
+                audioInputsSelect.appendChild(option);
+            }
+        });
+    });
 
     startBtn.addEventListener('click', startRecording);
     pauseBtn.addEventListener('click', pauseRecording);
