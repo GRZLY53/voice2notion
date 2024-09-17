@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 if (i === 0) {
                     canvasCtx.moveTo(x, y);
+                    transcriptionField.value = transcriptionField.value.trim() + '\n' + interimTranscript;
                 } else {
                     canvasCtx.lineTo(x, y);
                 }
