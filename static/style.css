@@ -3,6 +3,30 @@ body {
     margin: 20px;
 }
 
+.hamburger-menu {
+    position: relative;
+    display: inline-block;
+}
+
+.menu-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px;
+}
+
+.menu-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-content input, .menu-content select, .menu-content button {
+    margin-bottom: 10px;
+}
+
 #recorder-controls button {
     margin-right: 10px;
 }

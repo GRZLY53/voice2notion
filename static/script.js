@@ -9,7 +9,13 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error(error);
         });
 
+    const menuToggle = document.getElementById('menu-toggle');
+    const settingsMenu = document.getElementById('settings-menu');
     const startBtn = document.getElementById('start-btn');
+
+    menuToggle.addEventListener('click', () => {
+        settingsMenu.style.display = settingsMenu.style.display === 'block' ? 'none' : 'block';
+    });
     const pauseBtn = document.getElementById('pause-btn');
     const stopBtn = document.getElementById('stop-btn');
     const recordingsList = document.getElementById('recordings-list');
