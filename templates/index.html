@@ -25,6 +25,8 @@
         <input type="text" id="notion-token" name="notion-token" required>
         <label for="database-id">Database ID:</label>
         <input type="text" id="database-id" name="database-id" required>
+        <label for="audio-inputs">Select Audio Input:</label>
+        <select id="audio-inputs"></select>
         <button type="submit">Save Settings</button>
     </form>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
