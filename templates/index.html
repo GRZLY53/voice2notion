@@ -13,23 +13,24 @@
 <body class="container">
     <div class="hamburger-menu">
         <button id="menu-toggle" class="btn btn-secondary">☰</button>
-        <div id="settings-menu" class="menu-content mt-3 p-3 border rounded">
-            <form id="settings-form">
-                <div class="form-group">
-                    <label for="notion-api-key">Notion API Key:</label>
-                    <input type="text" id="notion-api-key" name="notion-api-key" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="notion-database-id">Notion Database ID:</label>
-                    <input type="text" id="notion-database-id" name="notion-database-id" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="audio-inputs">Select Audio Input:</label>
-                    <select id="audio-inputs" class="form-control"></select>
-                </div>
-                <button type="submit" class="btn btn-success">Save Settings</button>
-            </form>
-        </div>
+    </div>
+    <div id="settings-menu" class="menu-content mt-3 p-3 border rounded">
+        <button id="menu-close" class="btn btn-secondary mb-3">☰</button>
+        <form id="settings-form">
+            <div class="form-group">
+                <label for="notion-api-key">Notion API Key:</label>
+                <input type="text" id="notion-api-key" name="notion-api-key" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="notion-database-id">Notion Database ID:</label>
+                <input type="text" id="notion-database-id" name="notion-database-id" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="audio-inputs">Select Audio Input:</label>
+                <select id="audio-inputs" class="form-control"></select>
+            </div>
+            <button type="submit" class="btn btn-success">Save Settings</button>
+        </form>
     </div>
     <h1 class="text-center my-4">Voice Recorder</h1>
     <div class="d-flex align-items-center justify-content-center mb-3">
