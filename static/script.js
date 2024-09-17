@@ -119,10 +119,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
             recognition.continuous = true;
             recognition.interimResults = true;
-            let lastFinalTranscript = '';
+            let finalTranscript = '';
             recognition.onresult = (event) => {
                 let interimTranscript = '';
-                let finalTranscript = '';
                 for (let i = event.resultIndex; i < event.results.length; i++) {
                     const transcript = event.results[i][0].transcript;
                     if (event.results[i].isFinal) {
@@ -131,11 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         interimTranscript += transcript;
                     }
                 }
-                if (finalTranscript !== lastFinalTranscript) {
-                    transcriptionField.value += finalTranscript + ' ';
-                    lastFinalTranscript = finalTranscript;
-                }
-                transcriptionField.value = transcriptionField.value.trim() + ' ' + interimTranscript;
+                transcriptionField.value = finalTranscript + interimTranscript;
             };
             recognition.start();
         }
