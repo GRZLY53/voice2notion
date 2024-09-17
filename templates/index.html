@@ -6,6 +6,7 @@
     <title>Voice Recorder</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelementplayer.min.css">
     <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
     <script src="https://cdn.ckeditor.com/ckeditor5/35.3.0/classic/ckeditor.js"></script>
 </head>
@@ -45,10 +46,13 @@
     <ul id="recordings-list" class="list-unstyled text-center">
         <li>No recordings yet.</li>
     </ul>
+    <audio id="audio-player" class="d-none" controls>
+        <source id="audio-source" src="" type="audio/wav">
+    </audio>
     <h2 class="text-center mt-4">Transcription</h2>
     <textarea id="transcription-field" rows="10" class="form-control mb-4"></textarea>
     <div class="hamburger-menu text-center">
-        <button id="menu-toggle" class="btn btn-secondary">☰ Settings</button>
+        <button id="menu-toggle" class="btn btn-secondary">☰</button>
         <div id="settings-menu" class="menu-content mt-3 p-3 border rounded">
             <form id="settings-form">
                 <div class="form-group">
@@ -67,6 +71,7 @@
             </form>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelement-and-player.min.js"></script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>

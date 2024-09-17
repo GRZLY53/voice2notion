@@ -162,7 +162,13 @@ document.addEventListener('DOMContentLoaded', function() {
         if (recorder) {
             recorder.stopRecording(() => {
                 let blob = recorder.getBlob();
-                invokeSaveAsDialog(blob);
+                const audioURL = URL.createObjectURL(blob);
+                const audioPlayer = document.getElementById('audio-player');
+                const audioSource = document.getElementById('audio-source');
+                audioSource.src = audioURL;
+                audioPlayer.classList.remove('d-none');
+                audioPlayer.load();
+                audioPlayer.play();
                 stream.getTracks().forEach(track => track.stop());
                 console.log('Recording stopped');
 
