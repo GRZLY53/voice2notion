@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         source.connect(gainNode);
         gainNode.connect(analyser);
+        gainNode.connect(audioContext.destination); // Ensure audio is routed to the destination
         analyser.fftSize = 2048;
         bufferLength = analyser.frequencyBinCount;
         dataArray = new Uint8Array(bufferLength);
@@ -102,22 +103,26 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function startTranscription() {
-        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
-        recognition.continuous = true;
-        recognition.interimResults = true;
-        recognition.onresult = (event) => {
-            let interimTranscript = '';
-            for (let i = event.resultIndex; i < event.results.length; i++) {
-                const transcript = event.results[i][0].transcript;
-                if (event.results[i].isFinal) {
-                    transcriptionField.value += transcript + '\n';
-                } else {
-                    interimTranscript += transcript;
+        if (!('webkitSpeechRecognition' in window)) {
+            alert('Web Speech API is not supported by this browser. Upgrade to Chrome version 25 or later.');
+        } else {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.continuous = true;
+            recognition.interimResults = true;
+            recognition.onresult = (event) => {
+                let interimTranscript = '';
+                for (let i = event.resultIndex; i < event.results.length; i++) {
+                    const transcript = event.results[i][0].transcript;
+                    if (event.results[i].isFinal) {
+                        transcriptionField.value += transcript + '\n';
+                    } else {
+                        interimTranscript += transcript;
+                    }
                 }
-            }
-            transcriptionField.value = transcriptionField.value.trim() + '\n' + interimTranscript;
-        };
-        recognition.start();
+                transcriptionField.value = transcriptionField.value.trim() + '\n' + interimTranscript;
+            };
+            recognition.start();
+        }
     }
     function pauseRecording() {
         if (recorder) {
