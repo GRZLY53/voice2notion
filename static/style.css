@@ -16,7 +16,7 @@ body {
 .menu-content {
     position: fixed;
     top: 0;
-    left: -80%;
+    left: -100%;
     width: 80%;
     max-width: 300px;
     height: 100%;
@@ -30,7 +30,7 @@ body {
 
 @media (min-width: 768px) {
     .menu-content {
-        left: -250px;
+        left: -300px;
         width: 250px;
     }
 }

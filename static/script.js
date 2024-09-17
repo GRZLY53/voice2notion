@@ -12,16 +12,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.getElementById('menu-toggle');
     const menuClose = document.getElementById('menu-close');
     const settingsMenu = document.getElementById('settings-menu');
-    const hamburgerMenu = document.querySelector('.hamburger-menu');
     const startBtn = document.getElementById('start-btn');
 
     function toggleMenu() {
         if (settingsMenu.style.left === '0px') {
             settingsMenu.style.left = '-250px';
-            hamburgerMenu.style.display = 'block';
+            menuToggle.style.display = 'block';
         } else {
             settingsMenu.style.left = '0px';
-            hamburgerMenu.style.display = 'none';
+            menuToggle.style.display = 'none';
         }
     }
 
