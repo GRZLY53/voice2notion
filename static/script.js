@@ -126,7 +126,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function stopRecording() {
-    function stopRecording() {
         if (recorder) {
             recorder.stopRecording(() => {
                 let blob = recorder.getBlob();
@@ -154,6 +153,5 @@ document.addEventListener('DOMContentLoaded', function() {
         const databaseId = document.getElementById('database-id').value;
         console.log('Settings saved:', { notionToken, databaseId });
         // Implement settings save logic
-    }
     }
 });
