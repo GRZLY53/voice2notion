@@ -38,7 +38,7 @@ def record_audio():
             print("Recording complete.")
 
     # Save the audio file with metadata
-    audio_file_name = f"recording_{int(time.time())}.wav"
+    audio_file_name = f"recording_{int(time.time())}.mp3"
     audio_file_path = os.path.join('uploads', audio_file_name)
     with open(audio_file_path, 'wb') as f:
         f.write(audio.get_wav_data())
