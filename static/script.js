@@ -10,16 +10,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
     const menuToggle = document.getElementById('menu-toggle');
+    const menuClose = document.getElementById('menu-close');
     const settingsMenu = document.getElementById('settings-menu');
+    const hamburgerMenu = document.querySelector('.hamburger-menu');
     const startBtn = document.getElementById('start-btn');
 
-    menuToggle.addEventListener('click', () => {
-        if (settingsMenu.style.left === '0px' || settingsMenu.style.left === '') {
+    function toggleMenu() {
+        if (settingsMenu.style.left === '0px') {
             settingsMenu.style.left = '-250px';
+            hamburgerMenu.style.display = 'block';
         } else {
             settingsMenu.style.left = '0px';
+            hamburgerMenu.style.display = 'none';
         }
-    });
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+    menuClose.addEventListener('click', toggleMenu);
     const pauseBtn = document.getElementById('pause-btn');
     const stopBtn = document.getElementById('stop-btn');
     const recordingsList = document.getElementById('recordings-list');
