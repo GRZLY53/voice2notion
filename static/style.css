@@ -1,9 +1,11 @@
 body {
     overflow-x: hidden;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
+    background-color: #ffffff;
+    color: #333333;
+    line-height: 1.6;
 }
 
 .hamburger-menu {
@@ -15,6 +17,8 @@ body {
 
 .navbar {
     margin-bottom: 20px;
+    background-color: #007bff;
+    color: #ffffff;
 }
 
 .menu-content form {
@@ -22,7 +26,10 @@ body {
 }
 
 .menu-content input, .menu-content select, .menu-content button {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #cccccc;
 }
 
 #recorder-controls button {

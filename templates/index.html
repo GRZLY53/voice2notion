@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voice Recorder</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.16/mediaelementplayer.min.css">
     <script src="https://cdn.webrtc-experiment.com/RecordRTC.js"></script>
@@ -29,7 +30,7 @@
             </ul>
         </div>
     </nav>
-    <h1 class="text-center my-4">Voice Recorder</h1>
+    <h1 class="text-center my-4" style="font-weight: bold; font-size: 2.5rem;">Voice Recorder</h1>
     <div class="d-flex align-items-center justify-content-center mb-3">
         <canvas id="waveform" width="300" height="100" class="border"></canvas>
         <input type="range" id="sensitivity-slider" min="0" max="100" value="50" class="ml-3">
@@ -40,14 +41,14 @@
         <button id="pause-btn" class="btn btn-warning">Pause</button>
         <button id="stop-btn" class="btn btn-danger">Stop</button>
     </div>
-    <h2 class="text-center">Recordings</h2>
+    <h2 class="text-center" style="font-weight: bold; font-size: 2rem;">Recordings</h2>
     <ul id="recordings-list" class="list-unstyled text-center">
         <li>No recordings yet.</li>
     </ul>
     <audio id="audio-player" class="d-none" controls>
         <source id="audio-source" src="" type="audio/wav">
     </audio>
-    <h2 class="text-center mt-4">Transcription</h2>
+    <h2 class="text-center mt-4" style="font-weight: bold; font-size: 2rem;">Transcription</h2>
     <textarea id="transcription-field" rows="10" class="form-control mb-4"></textarea>
     <div class="hamburger-menu text-center">
         <button id="menu-toggle" class="btn btn-secondary">☰</button>
