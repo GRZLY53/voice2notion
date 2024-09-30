@@ -58,8 +58,8 @@ def record_audio():
         text = recognizer.recognize_google(audio)
         print(f"Transcription: {text}")
 
-        # Create a new page in Notion with metadata
-        notion.pages.create(
+        # Create a new page in Notion with metadata (without transcription)
+        page = notion.pages.create(
             parent={"database_id": config.get("notion_database_id", "your_database_id")},
             properties={
                 "Title": {
@@ -76,21 +76,31 @@ def record_audio():
                         "start": metadata["date"]
                     }
                 },
-                "Transcription": {
-                    "rich_text": [
-                        {
-                            "text": {
-                                "content": text
-                            }
-                        }
-                    ]
-                },
                 "Audio Link": {
                     "url": f"/uploads/{metadata['filename']}"
                 }
             }
         )
-        # Save the transcription to config
+        # Add transcription as a child block to the created page
+        notion.blocks.children.append(
+            block_id=page['id'],
+            children=[
+                {
+                    "object": "block",
+                    "type": "paragraph",
+                    "paragraph": {
+                        "rich_text": [
+                            {
+                                "type": "text",
+                                "text": {
+                                    "content": text
+                                }
+                            }
+                        ]
+                    }
+                }
+            ]
+        )
         config['last_transcription'] = text
         save_config(config)
 
